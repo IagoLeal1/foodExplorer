@@ -22,16 +22,25 @@ export const Plate = styled.div`
   gap: 12px;
   position: relative;
 
-  > h2 {
-    color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    font-family: 'Poppins';
-    font-weight: 200;
-    font-size: 14px;
-
-    @media (min-width: 1025px) {
-      font-size: 24px;
+  >button{
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+    > h2 {
+      color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      font-family: 'Poppins';
+      font-weight: 200;
+      font-size: 14px;
+  
+      @media (min-width: 1025px) {
+        font-size: 24px;
+      }
     }
   }
+
 
   > span {
     color: ${({ theme }) => theme.COLORS.CAKE_200};
@@ -47,14 +56,14 @@ export const Plate = styled.div`
   .coracao {
     display: flex;
     position: absolute;
-    margin-left: 150px;
+    margin-left: 130px;
     top: 16px;
 
     background-color: transparent;
     border: 0;
 
     @media (min-width: 1025px) {
-      margin-left: 262px;
+      margin-left: 220px;
     }
   }
 

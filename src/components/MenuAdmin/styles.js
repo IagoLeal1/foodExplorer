@@ -5,6 +5,9 @@ export const Container = styled.div`
   z-index: 999;
 
  >div{
+  @media (min-width: 1025px) {
+      display: none;
+    }
   >button{
     background-color: transparent;
     border: 0;

@@ -93,6 +93,100 @@ export const NewDiv = styled.div`
     }
   }
 
+  .tags {
+    background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 8px;
+    gap: 16px;
+
+    @media (min-width: 1025px) {
+      display: flex;
+      gap: 32px;
+      width: 837px;
+    }
+
+    .active {
+      display: flex;
+      text-align: center;
+      font-size: 16px;
+      font-family: 'Roboto';
+      font-weight: 300;
+      padding: 8px 16px;
+      border-radius: 8px;
+      gap: 8px;
+
+      background-color: ${({ theme }) => theme.COLORS.LIGHT_600};
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+      >input{
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        background-color: transparent;
+        border: 0;
+      }
+
+      > button {
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        background-color: transparent;
+        border: 0;
+      }
+    }
+
+    .addTag {
+      display: flex;
+      text-align: center;
+      font-size: 16px;
+      font-family: 'Roboto';
+      font-weight: 300;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px dashed ${({ theme }) => theme.COLORS.LIGHT_500};
+      gap: 8px;
+
+      color: ${({ theme }) => theme.COLORS.LIGHT_500};
+
+      >input{
+        color: ${({ theme }) => theme.COLORS.LIGHT_500};
+        background-color: transparent;
+        border: 0;
+      }
+
+      > button {
+        color: ${({ theme }) => theme.COLORS.LIGHT_500};
+        background-color: transparent;
+        border: 0;
+      }
+    }
+  }
+
+  .Preco {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 8px;
+    gap: 16px;
+    
+    background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    color: ${({ theme }) => theme.COLORS.LIGHT_500};
+
+    @media (min-width: 1025px) {
+      display: flex;
+      gap: 32px;
+      width: 251px;
+    }
+
+    #PriceInput {
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
+      border: 0;
+      color: ${({ theme }) => theme.COLORS.LIGHT_500};
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+  }
+
+
   .Description {
     display: flex;
     align-items: flex-start;

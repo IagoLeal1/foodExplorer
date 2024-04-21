@@ -51,16 +51,15 @@ export const NewDiv = styled.div`
       padding: 16px 14px;
       height: 48px;
     }
-    
-    >img{
+
+    > img {
       margin-right: 8px;
     }
 
-    >input{
+    > input {
       opacity: 0;
       position: absolute;
     }
-
   }
 
   .AllInput {
@@ -80,7 +79,7 @@ export const NewDiv = styled.div`
     }
   }
 
-  #Category {
+  #category {
     background-color: ${({ theme }) => theme.COLORS.DARK_900};
     border: 0;
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
@@ -94,6 +93,99 @@ export const NewDiv = styled.div`
       width: 363px;
       height: 48px;
       padding: 12px 32px;
+    }
+  }
+
+  .tags {
+    background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 8px;
+    gap: 16px;
+
+    @media (min-width: 1025px) {
+      display: flex;
+      gap: 32px;
+      width: 837px;
+    }
+
+    .active {
+      display: flex;
+      text-align: center;
+      font-size: 16px;
+      font-family: 'Roboto';
+      font-weight: 300;
+      padding: 8px 16px;
+      border-radius: 8px;
+      gap: 8px;
+
+      background-color: ${({ theme }) => theme.COLORS.LIGHT_600};
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+      >input{
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        background-color: transparent;
+        border: 0;
+      }
+
+      > button {
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        background-color: transparent;
+        border: 0;
+      }
+    }
+
+    .addTag {
+      display: flex;
+      text-align: center;
+      font-size: 16px;
+      font-family: 'Roboto';
+      font-weight: 300;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px dashed ${({ theme }) => theme.COLORS.LIGHT_500};
+      gap: 8px;
+
+      color: ${({ theme }) => theme.COLORS.LIGHT_500};
+
+      >input{
+        color: ${({ theme }) => theme.COLORS.LIGHT_500};
+        background-color: transparent;
+        border: 0;
+      }
+
+      > button {
+        color: ${({ theme }) => theme.COLORS.LIGHT_500};
+        background-color: transparent;
+        border: 0;
+      }
+    }
+  }
+
+  .Preco {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 8px;
+    gap: 16px;
+    
+    background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    color: ${({ theme }) => theme.COLORS.LIGHT_500};
+
+    @media (min-width: 1025px) {
+      display: flex;
+      gap: 32px;
+      width: 251px;
+    }
+
+    #PriceInput {
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
+      border: 0;
+      color: ${({ theme }) => theme.COLORS.LIGHT_500};
+      padding: 10px 14px;
+      border-radius: 8px;
     }
   }
 
@@ -130,7 +222,7 @@ export const NewDiv = styled.div`
     }
   }
 
-  >button{
+  > button {
     background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     width: 364px;
@@ -140,10 +232,10 @@ export const NewDiv = styled.div`
     cursor: pointer;
 
     @media (min-width: 1025px) {
-    display: flex;
-    justify-content: flex-end;
-    width: 172px;
-  }
+      display: flex;
+      justify-content: flex-end;
+      width: 172px;
+    }
   }
 `;
 

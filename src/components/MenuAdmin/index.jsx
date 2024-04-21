@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Container, Exit, Top, Wrapper } from './styles';
 import Search from '../Search';
 
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
+
 export default function MenuAdmin() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
@@ -22,6 +25,18 @@ export default function MenuAdmin() {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+
+  const { signOut, user } = useAuth();
+  const navigation = useNavigate()
+
+  function handleSignOut(){
+    navigation('/');
+    signOut();
+  }
+
+  function handleNewPlate() {
+    navigation(`/new`);
+  }
 
   return (
     <Container>
@@ -46,10 +61,10 @@ export default function MenuAdmin() {
             <Search />
             
             <Exit>
-              <button>
+              <button onClick={() => handleNewPlate()}>
                 <span>Novo Prato</span>
               </button>
-              <button>
+              <button onClick ={handleSignOut}>
                 <span>Sair</span>
               </button>
             </Exit>

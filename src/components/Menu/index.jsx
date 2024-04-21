@@ -2,7 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { Container, Exit, Top, Wrapper } from './styles';
 import Search from '../Search';
 
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
+
 export default function Menu() {
+
+  const { signOut, user } = useAuth();
+  const navigation = useNavigate()
+
+  function handleSignOut(){
+    navigation('/');
+    signOut();
+  }
+
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -46,7 +58,7 @@ export default function Menu() {
             <Search />
             
             <Exit>
-              <button>
+              <button onClick ={handleSignOut}>
                 <span>Sair</span>
               </button>
             </Exit>

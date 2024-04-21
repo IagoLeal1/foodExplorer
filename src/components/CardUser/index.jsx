@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import Contador from '../Contador';
 import { ContadorDiv, Container, Plate } from './styles';
+
+import { api } from '../../services/api';
+
 
 // eslint-disable-next-line react/prop-types
 export default function CardUser({ plateImage, plateName, platePrice }) {
   const [hearth, setHearth] = useState('../../src/assets/EmptyHeart.png');
+  const [data, setData] = useState(null);
 
   const handleClick = () => {
     if (hearth === '../../src/assets/EmptyHeart.png') {
@@ -14,8 +20,28 @@ export default function CardUser({ plateImage, plateName, platePrice }) {
     }
   };
 
+  const params = useParams();
+  const navigate = useNavigate();
+
+  function handleDetails() {
+    navigate(`/Details/`);
+  }
+
+  function handleDetails() {
+    navigate(`/details/`);
+  }
+
+  useEffect(() => {
+    async function fetchPlate() {
+      const response = await api.get(`/plates/${params.id}`);
+      setData(response.data);
+    }
+    fetchPlate();
+  }, []);
+
   return (
     <Container>
+       {data && (
       <Plate>
         <button
           className="coracao"
@@ -31,9 +57,12 @@ export default function CardUser({ plateImage, plateName, platePrice }) {
           alt="prato"
         />
 
-        <h2>{plateName}</h2>
+        <button onClick={handleDetails}>
+          <h2>{plateName}{' >'}</h2>
+        </button>
         <span>{platePrice}</span>
       </Plate>
+      )}
       <ContadorDiv>
         <Contador />
         <button className="include">incluir</button>

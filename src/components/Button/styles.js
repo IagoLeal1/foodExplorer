@@ -15,4 +15,8 @@ export const Container = styled.button`
   &:disabled{
     opacity: 0.5;
   }
+
+  &:hover, &:focus{
+    background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
+  }
 `;
