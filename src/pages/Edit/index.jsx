@@ -51,7 +51,7 @@ export function Edit() {
       price,
     });
 
-    alert('Prato criado com sucesso!');
+    alert('Prato alterado com sucesso!');
     navigate('/');
   }
 

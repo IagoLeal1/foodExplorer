@@ -1,4 +1,6 @@
-import { Banner, Container, CardPlates, CarrouselContainer } from './styles';
+/* eslint-disable no-undef */
+import { Banner, Container, CardPlates, CarrouselContainer, Arrow } from './styles';
+import { Navigation } from 'swiper/modules';
 
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -9,6 +11,7 @@ import CardUser from '../../components/CardUser';
 import { api } from '../../services/api';
 
 import 'swiper/css';
+import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export function Home() {
@@ -94,12 +97,18 @@ export function Home() {
         <h2>Refeição</h2>
 
         <CardPlates>
+        <Arrow className="refPrev"><img src="../../src/assets/left.png" alt="" /></Arrow>
           <Swiper
+           modules={[Navigation]}
             breakpoints={{
               1025: {
                 width: 1025,
                 slidesPerView: 3,
               },
+            }}
+            navigation={{
+              prevEl: '.refPrev',
+              nextEl: '.refNext' 
             }}
             loop={true}
             spaceBetween={0}
@@ -117,6 +126,7 @@ export function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <Arrow className="refNext"><img src="../../src/assets/right.png" alt="" /></Arrow>
         </CardPlates>
       </CarrouselContainer>
 
@@ -124,12 +134,17 @@ export function Home() {
         <h2>Sobremesas</h2>
 
         <CardPlates>
+        <Arrow className="desPrev"><img src="../../src/assets/left.png" alt="" /></Arrow>
           <Swiper
             breakpoints={{
               1025: {
                 width: 1025,
                 slidesPerView: 3,
               },
+            }}
+            navigation={{
+              prevEl: '.desPrev',
+              nextEl: '.desNext' 
             }}
             spaceBetween={0}
             slidesPerView={1.75}
@@ -145,6 +160,7 @@ export function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <Arrow className="desNext"><img src="../../src/assets/right.png" alt="" /></Arrow>
         </CardPlates>
       </CarrouselContainer>
 
@@ -152,12 +168,17 @@ export function Home() {
         <h2>Bebidas</h2>
 
         <CardPlates>
+        <Arrow className="drinkPrev"><img src="../../src/assets/left.png" alt="" /></Arrow>
           <Swiper
             breakpoints={{
               1025: {
                 width: 1025,
                 slidesPerView: 3,
               },
+            }}
+            navigation={{
+              prevEl: '.drinkPrev',
+              nextEl: '.drinkNext' 
             }}
             spaceBetween={0}
             slidesPerView={1.75}
@@ -173,6 +194,7 @@ export function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <Arrow className="drinkNext"><img src="../../src/assets/right.png" alt="" /></Arrow>
         </CardPlates>
       </CarrouselContainer>
       
