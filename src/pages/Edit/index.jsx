@@ -1,9 +1,10 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import HeaderAdmin from '../../components/HeaderAdmin';
 import Section from '../../components/Section';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 
 import { api } from '../../services/api';
 
@@ -11,51 +12,81 @@ import { BtnDiv, Container, NewDiv, SaveBtn } from './styles';
 
 export function Edit() {
 
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [tag, setTag] = useState([]);
-  const [newTag, setNewTag] = useState('');
-  const [category, setCategory] = useState('');
-  const [price, setPrice] = useState('');
+  const navigate = useNavigate()
+    const params = useParams()
+    
+    const [title, setTitle] = useState('')
+    const [category, setCategory] = useState('')
+    const [tag, setTag] = useState([])
+    const [newTag, setNewTag] = useState('')
+    const [price, setPrice] = useState('')
+    const [description, setDescription] = useState('')
 
-  const navigate = useNavigate();
+    useEffect(() => {
+      async function fetchData() {
+        const response = await api.get(`/plates/${params.id}`)
+        const { title, category, price, description, tag, photo } = response.data[0];
+        const tagArray = tag.split(',')
+        
+        setTitle(title);
+        setCategory(category);
+        setPrice(price);
+        setDescription(description);
+        setTag(tagArray);
+        
+        console.log(response)
+      }
 
-  function handleBack() {
-    navigate(`/`);
-  }
+      fetchData()
+    }, [])
 
-  function handleAddTag() {
-    setTag((prevState) => [...prevState, newTag]);
-  }
-
-  function handleRemoveTag(deleted) {
-    setTag((prevState) => prevState.filter((tag) => tag !== deleted));
-  }
-
-  async function handleNewPlate() {
-
-    event.preventDefault();
-
-    if (newTag) {
-      alert(
-        'Você deixou um ingrediente no campo para adicionar mas não adiciononu, clique para adicionar ou deixe o campo vazio para continuar'
-      );
-      return;
+    function handleAddTag() {
+        setTag(prevState => [...prevState, newTag])
+        setNewTag('')
     }
 
-    await api.post('/plates', {
-      title,
-      description,
-      tag,
-      category,
-      price,
-    });
+    function handleRemoveTag(deletedIngredient) {
+      setTag(prevState => prevState.filter(ingredient => ingredient !== deletedIngredient))
+    }
 
-    alert('Prato alterado com sucesso!');
-    navigate('/');
+    function handleBack() {
+        navigate(-2)
+    }
+
+    async function handleDeletePlate(event) {
+      event.preventDefault()
+
+      await api.delete(`/dishes/${params.id}`)
+
+      alert('Prato deletado com sucesso!')
+      handleBack()
+
+    }
+
+    async function handleEditPlate(event) {
+      event.preventDefault();
+
+      if (!title || !price || !description) {
+          return alert('Por favor preencha todos os campos para prosseguir com a alteração')
+      }
+
+      try {
+          const response = await api.put(`/dishes/${params.id}`, {
+              title,
+              description,
+              price,
+              category,
+              tag,
+          })
+
+          alert('Prato alterado com sucesso!')
+
+          handleBack()
+      } catch (error) {
+          alert('Erro ao alterar prato. Entre em contato com o administrador do sistema.')
+      }
+      
   }
-
-
 
   return (
     <Container>
@@ -85,7 +116,7 @@ export function Edit() {
                 id="PlateImgInput"
                 ></input>
               <img
-                src="../../src/assets/Upload.png"
+                src="../../src/assets/uploadIcon.svg"
                 alt="upload img"
               />
               <span>Selecione uma imagem</span>
@@ -161,9 +192,9 @@ export function Edit() {
         </Section>
 
         <SaveBtn>
-          <button className="Delete">Excluir Prato</button>
+          <button className="Delete" onClick={handleDeletePlate}>Excluir Prato</button>
           <button className="Save"
-           onClick={handleNewPlate}>Salvar alterações</button>
+           onClick={handleEditPlate}>Salvar alterações</button>
         </SaveBtn>
       </NewDiv>
 

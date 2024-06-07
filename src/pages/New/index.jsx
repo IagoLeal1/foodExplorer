@@ -80,7 +80,7 @@ export function New() {
                 name="PlateImg"
                 id="PlateImgInput"></input>
               <img
-                src="../../src/assets/Upload.png"
+                src="../../src/assets/uploadIcon.svg"
                 alt="upload img"
               />
               <span>Selecione uma imagem</span>

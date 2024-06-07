@@ -125,3 +125,18 @@ export const CardPlates = styled.div`
       width: 1122px;
     }
 `;
+
+export const Arrow = styled.div`
+  display: none;
+
+  @media (min-width: 1025px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    >img{
+      width: 15px;
+      height: 27px;
+    }
+}
+`

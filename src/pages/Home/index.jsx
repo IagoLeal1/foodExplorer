@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 import { Banner, Container, CardPlates, CarrouselContainer, Arrow } from './styles';
-import { Navigation } from 'swiper/modules';
 
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -12,6 +11,7 @@ import { api } from '../../services/api';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export function Home() {
@@ -136,6 +136,7 @@ export function Home() {
         <CardPlates>
         <Arrow className="desPrev"><img src="../../src/assets/left.png" alt="" /></Arrow>
           <Swiper
+          modules={[Navigation]}
             breakpoints={{
               1025: {
                 width: 1025,
@@ -148,6 +149,7 @@ export function Home() {
             }}
             spaceBetween={0}
             slidesPerView={1.75}
+            loop={true}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}>
             {searchResultsDessert.map((dessert) => (
@@ -170,6 +172,7 @@ export function Home() {
         <CardPlates>
         <Arrow className="drinkPrev"><img src="../../src/assets/left.png" alt="" /></Arrow>
           <Swiper
+          modules={[Navigation]}
             breakpoints={{
               1025: {
                 width: 1025,
@@ -182,6 +185,7 @@ export function Home() {
             }}
             spaceBetween={0}
             slidesPerView={1.75}
+            loop={true}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}>
             {searchResultsDrink.map((drinks) => (

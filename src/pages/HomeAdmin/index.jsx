@@ -1,4 +1,4 @@
-import { Banner, CardPlates, CarrouselContainer, Container } from './styles';
+import { Banner, CardPlates, CarrouselContainer, Container, Arrow } from './styles';
 
 import Footer from '../../components/Footer';
 import Header from '../../components/HeaderAdmin';
@@ -9,6 +9,8 @@ import CardUser from '../../components/CardUserAdmin';
 import { api } from '../../services/api';
 
 import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export function HomeAdmin() {
@@ -92,15 +94,22 @@ export function HomeAdmin() {
         <h2>Refeição</h2>
 
         <CardPlates>
+        <Arrow className="refPrev"><img src="../../src/assets/left.png" alt="" /></Arrow>
           <Swiper
+          modules={[Navigation]}
             breakpoints={{
               1025: {
                 width: 1025,
                 slidesPerView: 3,
               },
             }}
+            navigation={{
+              prevEl: '.refPrev',
+              nextEl: '.refNext' 
+            }}
             spaceBetween={0}
             slidesPerView={1.75}
+            loop={true}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}>
             {searchResultsPlate.map((plates) => (
@@ -114,6 +123,7 @@ export function HomeAdmin() {
               </SwiperSlide>
             ))}
           </Swiper>
+          <Arrow className="refNext"><img src="../../src/assets/right.png" alt="" /></Arrow>
         </CardPlates>
       </CarrouselContainer>
 
@@ -121,15 +131,22 @@ export function HomeAdmin() {
         <h2>Sobremesas</h2>
 
         <CardPlates>
+        <Arrow className="desPrev"><img src="../../src/assets/left.png" alt="" /></Arrow>
           <Swiper
+          modules={[Navigation]}
             breakpoints={{
               1025: {
                 width: 1025,
                 slidesPerView: 3,
               },
             }}
+            navigation={{
+              prevEl: '.desPrev',
+              nextEl: '.desNext' 
+            }}
             spaceBetween={0}
             slidesPerView={1.75}
+            loop={true}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}>
             {searchResultsDessert.map((dessert) => (
@@ -143,22 +160,29 @@ export function HomeAdmin() {
               </SwiperSlide>
             ))}
           </Swiper>
+        <Arrow className="desNext"><img src="../../src/assets/right.png" alt="" /></Arrow>
         </CardPlates>
       </CarrouselContainer>
 
       <CarrouselContainer>
         <h2>Bebidas</h2>
-
         <CardPlates>
+        <Arrow className="drinkPrev"><img src="../../src/assets/left.png" alt="" /></Arrow>
           <Swiper
+          modules={[Navigation]}
             breakpoints={{
               1025: {
                 width: 1025,
                 slidesPerView: 3,
               },
             }}
+            navigation={{
+              prevEl: '.drinkPrev',
+              nextEl: '.drinkNext' 
+            }}
             spaceBetween={0}
             slidesPerView={1.75}
+            loop={true}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}>
             {searchResultsDrink.map((drinks) => (
@@ -172,6 +196,7 @@ export function HomeAdmin() {
               </SwiperSlide>
             ))}
           </Swiper>
+        <Arrow className="drinkNext"><img src="../../src/assets/right.png" alt="" /></Arrow>
         </CardPlates>
       </CarrouselContainer>
 

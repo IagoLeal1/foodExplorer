@@ -43,6 +43,7 @@ export const NewDiv = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_500};
     padding: 16px 14px;
     border-radius: 8px;
+    cursor: pointer;
 
     @media (min-width: 1025px) {
       display: flex;
